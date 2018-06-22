@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="PhotoToolBarView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="189"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6L5-pG-5rA">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="126"/>
+                    <color key="backgroundColor" red="1" green="0.04677283753" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cJf-F6-NBM">
+                    <rect key="frame" x="0.0" y="126" width="375" height="63"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gzd-WV-wim">
+                            <rect key="frame" x="0.0" y="11.5" width="375" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="qjW-om-O5Y"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" red="0.043533398469999998" green="0.68066966529999995" blue="0.1800708734" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="Gzd-WV-wim" secondAttribute="trailing" id="IWE-22-m5B"/>
+                        <constraint firstItem="Gzd-WV-wim" firstAttribute="leading" secondItem="cJf-F6-NBM" secondAttribute="leading" id="Ozy-UO-9Ou"/>
+                        <constraint firstItem="Gzd-WV-wim" firstAttribute="centerY" secondItem="cJf-F6-NBM" secondAttribute="centerY" id="ezf-Tv-k3C"/>
+                        <constraint firstItem="Gzd-WV-wim" firstAttribute="centerX" secondItem="cJf-F6-NBM" secondAttribute="centerX" id="ySD-Ou-SuB"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="cJf-F6-NBM" firstAttribute="height" secondItem="vUN-kp-3ea" secondAttribute="height" multiplier="1/3" id="JAA-qI-r3S"/>
+                <constraint firstItem="6L5-pG-5rA" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="JAC-N4-6da"/>
+                <constraint firstItem="6L5-pG-5rA" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="MdA-di-fum"/>
+                <constraint firstItem="cJf-F6-NBM" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="SJp-ke-KDp"/>
+                <constraint firstItem="cJf-F6-NBM" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Unm-m3-lVq"/>
+                <constraint firstItem="6L5-pG-5rA" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="WDc-cF-679"/>
+                <constraint firstItem="cJf-F6-NBM" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="nQA-LU-jrk"/>
+                <constraint firstItem="6L5-pG-5rA" firstAttribute="height" secondItem="vUN-kp-3ea" secondAttribute="height" multiplier="2/3" id="nXo-bQ-hwZ"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="bottomTool" destination="Gzd-WV-wim" id="57L-5P-dp4"/>
+                <outlet property="bottomToolView" destination="cJf-F6-NBM" id="vME-Fs-KIt"/>
+                <outlet property="topToolView" destination="6L5-pG-5rA" id="f2L-yC-Geo"/>
+            </connections>
+            <point key="canvasLocation" x="64.5" y="157.5"/>
+        </view>
+    </objects>
+</document>

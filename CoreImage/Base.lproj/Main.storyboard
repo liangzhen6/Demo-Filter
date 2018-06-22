@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uIR-6a-iPH">
+                                <rect key="frame" x="93.5" y="20" width="187.5" height="323.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gOo-jc-67U">
+                                <rect key="frame" x="142" y="537" width="90" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.61825280940000005" blue="0.088455048930000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Fuf-Hp-1Ho"/>
+                                    <constraint firstAttribute="width" constant="90" id="skS-5p-kZy"/>
+                                </constraints>
+                                <state key="normal" title="相册选择">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CQq-hR-qzb"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B52-F0-7ir">
+                                <rect key="frame" x="143" y="477" width="90" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.61825280940000005" blue="0.088455048930000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="90" id="59v-2w-vy4"/>
+                                    <constraint firstAttribute="height" constant="30" id="dZs-1s-M6d"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="增加滤镜">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Gw7-YC-nO9"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="uIR-6a-iPH" firstAttribute="width" secondItem="6Tk-OE-BBY" secondAttribute="width" multiplier="0.5" id="0bb-U9-jge"/>
+                            <constraint firstItem="gOo-jc-67U" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="1rz-dV-IpZ"/>
+                            <constraint firstItem="uIR-6a-iPH" firstAttribute="height" secondItem="6Tk-OE-BBY" secondAttribute="height" multiplier="0.5" id="9ct-di-9h1"/>
+                            <constraint firstItem="B52-F0-7ir" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="CbF-V1-Knj"/>
+                            <constraint firstItem="uIR-6a-iPH" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="S2R-pp-M5I"/>
+                            <constraint firstItem="uIR-6a-iPH" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="nGk-sE-Js2"/>
+                            <constraint firstItem="gOo-jc-67U" firstAttribute="top" secondItem="B52-F0-7ir" secondAttribute="bottom" constant="30" id="qRS-Lk-tbr"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="gOo-jc-67U" secondAttribute="bottom" constant="100" id="rbU-Bg-WqL"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="uIR-6a-iPH" id="9mN-4I-a0d"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>
