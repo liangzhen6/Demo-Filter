@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class FilterModel;
 @interface FilterMainView : UIView
-
++ (id)filterMainView;
+- (void)initOriginImage:(UIImage *)image;
+- (void)selectFilterModel:(FilterModel *)filterModel;
 @end

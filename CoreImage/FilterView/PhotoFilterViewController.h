@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface PhotoFilterViewController : UIViewController
-
+@property(nonatomic,strong)UIImage * originImage;
 @end

@@ -12,6 +12,7 @@
 @property(nonatomic,copy)NSString *filterName;
 @property(nonatomic,copy)NSString *filterCode;
 @property(nonatomic,assign)BOOL canVerb;
+@property(nonatomic,assign)BOOL isSelect;
 
 @property(nonatomic,strong)UIImage * originImage;
 @property(nonatomic,strong)UIImage * filterImage;

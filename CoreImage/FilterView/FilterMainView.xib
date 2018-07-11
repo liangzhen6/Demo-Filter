@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="FilterMainView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="500"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KY3-Z3-a0r">
+                    <rect key="frame" x="0.0" y="20" width="375" height="480"/>
+                </scrollView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="KY3-Z3-a0r" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="0As-E0-pZq"/>
+                <constraint firstItem="KY3-Z3-a0r" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="89o-mC-324"/>
+                <constraint firstItem="KY3-Z3-a0r" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="IEN-d1-iO5"/>
+                <constraint firstItem="KY3-Z3-a0r" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="Kva-8j-Jey"/>
+                <constraint firstItem="KY3-Z3-a0r" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="SoW-ai-6zp"/>
+                <constraint firstItem="KY3-Z3-a0r" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="y5x-0d-93v"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="mainScrollView" destination="KY3-Z3-a0r" id="xM9-cv-8fA"/>
+            </connections>
+        </view>
+    </objects>
+</document>

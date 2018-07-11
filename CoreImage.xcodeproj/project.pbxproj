@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA1097B320F5A71700EE513F /* FilterMainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA1097B220F5A71700EE513F /* FilterMainView.xib */; };
 		FA2D234120DB8F760000CB55 /* PhotoFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA2D233F20DB8F760000CB55 /* PhotoFilterViewController.m */; };
 		FA2D234220DB8F760000CB55 /* PhotoFilterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA2D234020DB8F760000CB55 /* PhotoFilterViewController.xib */; };
 		FA2D234520DB8FB70000CB55 /* FilterMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA2D234420DB8FB70000CB55 /* FilterMainView.m */; };
@@ -50,6 +51,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FA1097B220F5A71700EE513F /* FilterMainView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterMainView.xib; sourceTree = "<group>"; };
+		FA1097B420F5B2A700EE513F /* FilterEnum.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FilterEnum.h; sourceTree = "<group>"; };
 		FA2D233E20DB8F760000CB55 /* PhotoFilterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotoFilterViewController.h; sourceTree = "<group>"; };
 		FA2D233F20DB8F760000CB55 /* PhotoFilterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotoFilterViewController.m; sourceTree = "<group>"; };
 		FA2D234020DB8F760000CB55 /* PhotoFilterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoFilterViewController.xib; sourceTree = "<group>"; };
@@ -119,6 +122,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FA1097B520F5DB3500EE513F /* FilterTools */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = FilterTools;
+			sourceTree = "<group>";
+		};
 		FA8C0FC620DBCDEC004D6498 /* FilterView */ = {
 			isa = PBXGroup;
 			children = (
@@ -127,6 +137,7 @@
 				FA2D234020DB8F760000CB55 /* PhotoFilterViewController.xib */,
 				FA2D234320DB8FB70000CB55 /* FilterMainView.h */,
 				FA2D234420DB8FB70000CB55 /* FilterMainView.m */,
+				FA1097B220F5A71700EE513F /* FilterMainView.xib */,
 				FA2D234820DBA2DE0000CB55 /* PhotoToolBarView.h */,
 				FA2D234920DBA2DE0000CB55 /* PhotoToolBarView.m */,
 				FA8C0FCB20DBD509004D6498 /* PhotoToolBarView.xib */,
@@ -161,6 +172,7 @@
 			children = (
 				FAC974AE20D8C1260020D7F1 /* AppDelegate.h */,
 				FAC974AF20D8C1260020D7F1 /* AppDelegate.m */,
+				FA1097B520F5DB3500EE513F /* FilterTools */,
 				FADBD28B20DD1EC3006E81C3 /* Library */,
 				FAC974B120D8C1260020D7F1 /* ViewController.h */,
 				FAC974B220D8C1260020D7F1 /* ViewController.m */,
@@ -171,6 +183,7 @@
 				FAC974B920D8C1280020D7F1 /* LaunchScreen.storyboard */,
 				FAC974BC20D8C1280020D7F1 /* Info.plist */,
 				FA8C0FC720DBCE3F004D6498 /* FilterPCH.pch */,
+				FA1097B420F5B2A700EE513F /* FilterEnum.h */,
 				FAC974BD20D8C1280020D7F1 /* main.m */,
 			);
 			path = CoreImage;
@@ -345,6 +358,7 @@
 				FAC974BB20D8C1280020D7F1 /* LaunchScreen.storyboard in Resources */,
 				FA94FF6F20DCF4F20007D687 /* FilterData.plist in Resources */,
 				FA8C0FCC20DBD509004D6498 /* PhotoToolBarView.xib in Resources */,
+				FA1097B320F5A71700EE513F /* FilterMainView.xib in Resources */,
 				FA2D234220DB8F760000CB55 /* PhotoFilterViewController.xib in Resources */,
 				FAC974B820D8C1280020D7F1 /* Assets.xcassets in Resources */,
 				FA69154B20DD001F00B8698E /* FilterCollectionViewHeader.xib in Resources */,

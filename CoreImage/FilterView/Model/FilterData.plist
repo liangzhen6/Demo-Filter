@@ -11,35 +11,49 @@
 		<array>
 			<dict>
 				<key>filterName</key>
-				<string>测试</string>
+				<string>老电影</string>
 				<key>filterCode</key>
-				<string>TEST</string>
+				<string>CIPhotoEffectChrome</string>
 				<key>canVerb</key>
-				<true/>
+				<false/>
 			</dict>
 			<dict>
 				<key>filterName</key>
-				<string>测试</string>
+				<string>胶片</string>
 				<key>filterCode</key>
-				<string>TEST</string>
+				<string>CIPhotoEffectFade</string>
 				<key>canVerb</key>
-				<true/>
+				<false/>
 			</dict>
 			<dict>
 				<key>filterName</key>
-				<string>测试</string>
+				<string>岁月</string>
 				<key>filterCode</key>
-				<string>TEST</string>
+				<string>CIPhotoEffectInstant</string>
 				<key>canVerb</key>
-				<true/>
+				<false/>
 			</dict>
 			<dict>
 				<key>filterName</key>
-				<string>测试</string>
+				<string>单色</string>
 				<key>filterCode</key>
-				<string>TEST</string>
+				<string>CIPhotoEffectMono</string>
 				<key>canVerb</key>
-				<true/>
+				<false/>
+			</dict>
+			<dict>
+				<key>filterName</key>
+				<string>冷色</string>
+				<key>filterCode</key>
+				<string>CIPhotoEffectProcess</string>
+				<key>canVerb</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>filterName</key>
+				<string>暖色</string>
+				<key>filterCode</key>
+				<string>CIPhotoEffectTransfer</string>
 			</dict>
 		</array>
 	</dict>
@@ -52,7 +66,7 @@
 		<array>
 			<dict>
 				<key>filterName</key>
-				<string>测试</string>
+				<string>测试5</string>
 				<key>filterCode</key>
 				<string>TEST</string>
 				<key>canVerb</key>
@@ -60,7 +74,7 @@
 			</dict>
 			<dict>
 				<key>filterName</key>
-				<string>测试</string>
+				<string>测试6</string>
 				<key>filterCode</key>
 				<string>TEST</string>
 				<key>canVerb</key>
@@ -68,7 +82,7 @@
 			</dict>
 			<dict>
 				<key>filterName</key>
-				<string>测试</string>
+				<string>测试7</string>
 				<key>filterCode</key>
 				<string>TEST</string>
 				<key>canVerb</key>
@@ -76,7 +90,7 @@
 			</dict>
 			<dict>
 				<key>filterName</key>
-				<string>测试</string>
+				<string>测试8</string>
 				<key>filterCode</key>
 				<string>TEST</string>
 				<key>canVerb</key>

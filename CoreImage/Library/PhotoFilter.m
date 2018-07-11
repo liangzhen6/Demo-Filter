@@ -36,16 +36,24 @@ static PhotoFilter * _photoFilter;
 }
 //处理滤镜
 - (void)setFilterWithNames:(NSArray <NSString *>*)names originImage:(UIImage *)originImage complete:(ResultFilterBlock)resultBlock {
-    UIImage *resultImage = [self outputImageWithFilterName:[names firstObject] originImage:originImage];
-    if (resultImage) {
-        if (resultBlock) {
-            resultBlock(resultImage, YES);
-        }
-    } else {
-        if (resultBlock) {
-            resultBlock(nil, NO);
-        }
-    }
+    //异步操作
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        UIImage *resultImage = [self outputImageWithFilterName:[names firstObject] originImage:originImage];
+        //切换主队列
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (resultImage) {
+                if (resultBlock) {
+                    resultBlock(resultImage, YES);
+                }
+            } else {
+                if (resultBlock) {
+                    resultBlock(nil, NO);
+                }
+            }
+        });
+      
+    });
+   
 }
 
 - (UIImage *)outputImageWithFilterName:(NSString *)filterName originImage:(UIImage *)originImage {

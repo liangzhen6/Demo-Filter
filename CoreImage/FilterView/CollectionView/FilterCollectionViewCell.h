@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 @class FilterModel;
 
-typedef void(^FilterBlock)(FilterModel * model);
+typedef void(^FilterBlock)(FilterCellType cellType, FilterModel * model);
 @interface FilterCollectionViewCell : UICollectionViewCell
 @property(nonatomic,strong)FilterModel * filterModel;
 @property(nonatomic,copy)FilterBlock filterBlock;

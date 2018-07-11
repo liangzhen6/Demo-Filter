@@ -9,9 +9,11 @@
 #import "PhotoFilterViewController.h"
 #import "FilterMainView.h"
 #import "PhotoToolBarView.h"
+#import "FilterCategoryModel.h"
+#import "FilterModel.h"
 
 @interface PhotoFilterViewController ()
-@property (weak, nonatomic) IBOutlet FilterMainView *filterMain;
+@property (weak, nonatomic) IBOutlet UIView *filterMain;
 @property (weak, nonatomic) IBOutlet UIView *photoToolBar;
 
 @end
@@ -25,9 +27,33 @@
     // Do any additional setup after loading the view from its nib.
 }
 - (void)initView {
+    FilterMainView * mainView = [FilterMainView filterMainView];
+    mainView.frame = _filterMain.bounds;
+    [_filterMain addSubview:mainView];
+    [mainView initOriginImage:self.originImage];
+
+    
     PhotoToolBarView * toolBarView = [PhotoToolBarView photoToolBarView];
     toolBarView.frame = _photoToolBar.bounds;
+    [toolBarView initOriginImage:self.originImage];
     [_photoToolBar addSubview:toolBarView];
+    __weak PhotoFilterViewController * weakSelf = self;
+    [toolBarView setPhotoToolBlock:^(PhotoToolType photoToolType, FilterModel * _Nullable filterModel) {
+        switch (photoToolType) {
+            case PhotoToolTypeBack:
+                {//返回上一层
+                [weakSelf dismissViewControllerAnimated:YES completion:nil];
+                }
+                break;
+            case PhotoToolTypeSelectFilter:
+                {//处理滤镜
+                    [mainView selectFilterModel:filterModel];
+                }
+                break;
+            default:
+                break;
+        }
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

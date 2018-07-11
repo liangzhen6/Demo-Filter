@@ -24,7 +24,11 @@
     // Do any additional setup after loading the view, typically from a nib.
 }
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    [self presentViewController:[[PhotoFilterViewController alloc] init] animated:YES completion:nil];
+    if (self.originImage) {
+        PhotoFilterViewController * controller = [[PhotoFilterViewController alloc] init];
+        controller.originImage = self.originImage;
+        [self presentViewController:controller animated:YES completion:nil];
+    }
 }
 
 - (IBAction)btnAction:(UIButton *)sender {

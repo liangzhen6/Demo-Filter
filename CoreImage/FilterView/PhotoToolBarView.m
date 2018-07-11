@@ -10,13 +10,16 @@
 #import "FilterCollectionViewCell.h"
 #import "FilterCollectionViewHeader.h"
 #import "FilterCategoryModel.h"
+#import "FilterModel.h"
 
 @interface PhotoToolBarView ()<UICollectionViewDataSource,UICollectionViewDelegate>
 @property (weak, nonatomic) IBOutlet UIView *topToolView;
 @property (weak, nonatomic) IBOutlet UIView *bottomToolView;
 @property (weak, nonatomic) IBOutlet UIView *bottomTool;
 @property(nonatomic,strong)NSMutableArray *dataArrM;
-@property(nonatomic,strong)UICollectionView * collectionView;
+@property(nonatomic,strong)UICollectionView *collectionView;
+@property(nonatomic,strong)NSIndexPath *lastSelectPath;
+@property(nonatomic,strong)UIImage *compressImage;
 @end
 
 static NSString * const collectionCell = @"FilterCollectionViewCell";
@@ -27,15 +30,11 @@ static NSString * const collectionHeader = @"FilterCollectionViewHeader";
     NSString * className = NSStringFromClass([self class]);
     UINib * nib = [UINib nibWithNibName:className bundle:nil];
     PhotoToolBarView * photoTool = [nib instantiateWithOwner:nil options:nil].firstObject;
-//    [photoTool initView];
-//    [photoTool initData];
+    [photoTool initView];
+    [photoTool initData];
     return photoTool;
 }
-- (void)layoutSubviews {
-    [super layoutSubviews];
-    [self initView];
-    [self initData];
-}
+
 - (void)initView {
     
     CGFloat H;
@@ -97,12 +96,14 @@ static NSString * const collectionHeader = @"FilterCollectionViewHeader";
 }
 #pragma mark ====data===
 - (void)initData {
+    _lastSelectPath = [NSIndexPath indexPathForItem:-1 inSection:-1];
     NSString * path = [[NSBundle mainBundle] pathForResource:@"FilterData" ofType:@"plist"];
     NSArray * array = [NSArray arrayWithContentsOfFile:path];
     
     for (NSDictionary * dict in array) {
         [self.dataArrM addObject:[FilterCategoryModel filterCategoryModelWithDict:dict]];;
     }
+
     [self.collectionView reloadData];
 }
 
@@ -111,7 +112,9 @@ static NSString * const collectionHeader = @"FilterCollectionViewHeader";
     switch (sender.tag) {
         case 0:
             {//返回
-            
+                if (self.photoToolBlock) {
+                    self.photoToolBlock(PhotoToolTypeBack,nil);
+                }
                 
             }
             break;
@@ -154,8 +157,50 @@ static NSString * const collectionHeader = @"FilterCollectionViewHeader";
 
 #pragma mark --UICollectionViewDelegate-
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    
+    if (_lastSelectPath != indexPath) {
+        //1.先把上一个选中的给设置为默认状态
+        if (_lastSelectPath.section > -1 && _lastSelectPath.item > -1) {
+            NSArray * subArr = [self.dataArrM[_lastSelectPath.section] filterArray];
+            //设置 数据源
+            FilterModel * filterModel = subArr[_lastSelectPath.item];
+            filterModel.isSelect = NO;
+        }
+        //2.刷新选中了某一个按钮
+        NSArray * subArr = [self.dataArrM[indexPath.section] filterArray];
+        //设置 数据源
+        FilterModel * filterModel = subArr[indexPath.item];
+        filterModel.isSelect = YES;
+        if (_lastSelectPath.section == indexPath.section) {
+            //相同的组 刷新两个
+            [self.collectionView reloadItemsAtIndexPaths:@[_lastSelectPath, indexPath]];
+        } else {
+            [self.collectionView reloadItemsAtIndexPaths:@[indexPath]];
+        }
+        if (self.photoToolBlock) {
+            self.photoToolBlock(PhotoToolTypeSelectFilter, filterModel);
+        }
+        _lastSelectPath = indexPath;
+        DBNLog(@"当前%@",filterModel);
+    }
 }
+- (void)initOriginImage:(UIImage *)image {
+    NSData *data = UIImageJPEGRepresentation(image, 0.2);
+    self.compressImage = [UIImage imageWithData:data];
+    
+    for (FilterCategoryModel * categoryModel in self.dataArrM) {
+        for (FilterModel * model in categoryModel.filterArray) {
+            model.originImage = self.compressImage;
+        }
+    }    
+}
+
+//- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
+//    //选中了某一个按钮
+//    NSArray * subArr = [self.dataArrM[indexPath.section] filterArray];
+//    //设置 数据源
+//    FilterModel * filterModel = subArr[indexPath.item];
+//    DBNLog(@"上一个%@",filterModel);
+//}
 #pragma mark --UICollectionViewDataSource-
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return self.dataArrM.count;
@@ -177,9 +222,21 @@ static NSString * const collectionHeader = @"FilterCollectionViewHeader";
     cell.filterModel = subArr[indexPath.item];
     
     __weak PhotoToolBarView * weakSelf = self;
-    [cell setFilterBlock:^(FilterModel *model) {
-        //弹出 调节滤镜的参数工具
-        DBNLog(@"弹出 调节滤镜的参数工具");
+    [cell setFilterBlock:^(FilterCellType cellType, FilterModel *model) {
+        switch (cellType) {
+            case FilterCellTypeRefresh:
+                {//只是刷新当前的cell而已
+                    [weakSelf refreshCellWithModel:model];
+                }
+                break;
+            case FilterCellTypeShowToolBar:
+                {//弹出弹窗，用户可以调节参数
+                
+                }
+                break;
+            default:
+                break;
+        }
     }];
     return cell;
 }
@@ -218,6 +275,23 @@ static NSString * const collectionHeader = @"FilterCollectionViewHeader";
         }
     }
     return -1;
+}
+- (void)refreshCellWithModel:(FilterModel *)filterModel {
+    //1.找出当前的是哪一个
+    NSIndexPath *indexPath = [self findOutIndexPathWithFilterModel:filterModel];
+    //2.刷新当前的 item
+    [self.collectionView reloadItemsAtIndexPaths:@[indexPath]];
+}
+- (NSIndexPath *)findOutIndexPathWithFilterModel:(FilterModel *)filterModel {
+    for (NSInteger i = 0; i < self.dataArrM.count; i++) {
+        FilterCategoryModel * categoryModel = self.dataArrM[i];
+        if ([categoryModel.filterArray containsObject:filterModel]) {
+            NSInteger index = [categoryModel.filterArray indexOfObject:filterModel];
+            NSIndexPath *indexPath = [NSIndexPath indexPathForItem:index inSection:i];
+            return indexPath;
+        }
+    }
+    return 0;
 }
 #pragma mark --lazy
 - (NSMutableArray *)dataArrM {

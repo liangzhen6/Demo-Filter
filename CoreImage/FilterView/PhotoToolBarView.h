@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class FilterModel;
+typedef void(^PhotoToolBlock)(PhotoToolType photoToolType, FilterModel *_Nullable filterModel);
 @interface PhotoToolBarView : UIView
+@property(nonatomic,copy)PhotoToolBlock photoToolBlock;
 + (id)photoToolBarView;
+- (void)initOriginImage:(UIImage *)image;
 
 @end
