@@ -4,7 +4,7 @@
 <array>
 	<dict>
 		<key>title</key>
-		<string>NOMO</string>
+		<string>简单</string>
 		<key>imageStr</key>
 		<string>test</string>
 		<key>filterArray</key>
@@ -59,18 +59,31 @@
 	</dict>
 	<dict>
 		<key>title</key>
-		<string>NOMO</string>
+		<string>艺术</string>
 		<key>imageStr</key>
 		<string>test</string>
 		<key>filterArray</key>
 		<array>
 			<dict>
 				<key>filterName</key>
-				<string>测试5</string>
+				<string>木刻</string>
 				<key>filterCode</key>
-				<string>TEST</string>
+				<string>CIEdgeWork</string>
 				<key>canVerb</key>
 				<true/>
+				<key>filterParameter</key>
+				<array>
+					<dict>
+						<key>ParameterName</key>
+						<string>CIAttributeTypeDistance</string>
+						<key>ParameterType</key>
+						<string>NSNumber</string>
+						<key>ParameterDefault</key>
+						<real>3</real>
+						<key>ParameterVerb</key>
+						<true/>
+					</dict>
+				</array>
 			</dict>
 			<dict>
 				<key>filterName</key>

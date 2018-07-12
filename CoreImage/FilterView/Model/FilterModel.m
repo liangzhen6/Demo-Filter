@@ -14,7 +14,7 @@
     filterModel.filterName = dict[@"filterName"];
     filterModel.filterCode = dict[@"filterCode"];
     filterModel.canVerb = YES;
-    
+
     return filterModel;
 }
 
